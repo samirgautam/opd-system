@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\BookingController::class, 'index'])->name('booking');
+Route::post('/conform', [App\Http\Controllers\BookingController::class, 'confirm'])->name('confirm');

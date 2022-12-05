@@ -39,15 +39,11 @@
         </label>
 
 
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-        <label class="form-check-label" for="flexRadioDefault2">
-          Other
-        </label>
+</div>
 
 
-        <div class="mb-3">
+
+     <div class="mb-3">
           <label for="mobile_number"  class="form-label">Mobile Number</label>
           <input type="text" class="form-control" name="discount" id="discount">
         </div>
@@ -57,7 +53,11 @@
           </div>
 
 
-      <input type="submit" value="submit">
+
+          <form method="POST" action="{{route('confirm')}}">
+            @csrf
+            <td><button type="Submit" class="btn btn-danger">Submit</button></td>
+          </form>
     </form>
 </div>
 
