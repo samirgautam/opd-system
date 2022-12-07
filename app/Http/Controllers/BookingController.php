@@ -16,7 +16,10 @@ class BookingController extends Controller
     {
         return view('booking.index');
     }
-
+    public function  chart ()
+    {
+        return view('chart.piechart');
+    }
     /**
      * Show the form for creating a new resource.
      *
