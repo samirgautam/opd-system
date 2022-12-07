@@ -41,7 +41,7 @@ Route::get('/', [App\Http\Controllers\BookingController::class, 'index'])->name(
 Route::post('/conform', [App\Http\Controllers\BookingController::class, 'confirm'])->name('confirm');
 Route::get('/chart',[App\Http\Controllers\HomeController::class, 'chart'])->name('chart');
 
-   
+
 
 //user routes
 Route::get('/user/profile',[App\Http\Controllers\HomeController::class,'showUser'])->name('user-profile');

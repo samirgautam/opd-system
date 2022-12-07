@@ -84,7 +84,7 @@
                             </div>
 
                             <div class="sb-sidenav-menu-heading">Reports</div>
-                            <a class="nav-link" href="charts.html">
+                            <a class="nav-link" href="{{route('chart')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>
