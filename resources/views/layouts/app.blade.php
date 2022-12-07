@@ -31,7 +31,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Profile</a></li>
-                        <li><a class="dropdown-item" href="#!">Change Password</a></li>
+                        <li><a class="dropdown-item" href="{{route('change-password')}}">Change Password</a></li>
 
                         <li><hr class="dropdown-divider" /></li>
                         {{-- <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li> --}}
@@ -67,8 +67,8 @@
                                     <a class="nav-link" href="{{route('doctor.create')}}">Add</a>
                                 </nav>
                             </div>
-                            
-                            
+
+
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Bookings
@@ -80,7 +80,7 @@
                                     <a class="nav-link" href="{{route('booking.create')}}">Add</a>
                                 </nav>
                             </div>
-                          
+
                             <div class="sb-sidenav-menu-heading">Reports</div>
                             <a class="nav-link" href="charts.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
@@ -100,7 +100,7 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    
+
             @yield('content')
 
         </main>
