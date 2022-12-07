@@ -30,3 +30,6 @@ Route::get('/doctor/create',[App\Http\Controllers\DoctorController::class,'creat
 Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
 Route::post('/change-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');
 
+
+//user routes
+Route::get('/user/profile',[App\Http\Controllers\HomeController::class,'showUser'])->name('user-profile');

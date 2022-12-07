@@ -27,31 +27,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function changePassword()
-    {
-        return view('change-password');
-    }
-
-    public function updatePassword(Request $request)
-    {
-
-        #validation
-        $request->validate([
-            'old_password'=> 'required',
-            'new_password'=> 'required|confirmed',
-        ]);
-
-        #match old password
-
-        if(!Hash::check($request->old_password, auth()->user()->password)){
-            return back()->with("error","Old Password Dosen't match!");
-        }
-
-        #update new password
-        User::whereId(auth()->user()->id)->update([
-            'password' => Hash::make($request->new_password)
-        ]);
-        return back()->with("status","Password change sucessfully!");
+    public function showUser(){
+        return view('user-profile');
     }
 }
