@@ -27,5 +27,3 @@ Route::get('/booking/create',[App\Http\Controllers\BookingController::class,'ind
 //Doctor Routes
 Route::get('/doctor',[App\Http\Controllers\DoctorController::class,'index'])->name('doctor.index');
 Route::get('/doctor/create',[App\Http\Controllers\DoctorController::class,'create'])->name('doctor.create');
-
-
