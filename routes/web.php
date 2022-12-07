@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,12 @@ Route::get('/doctor/create',[App\Http\Controllers\DoctorController::class,'creat
 Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
 Route::post('/change-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');
 
+
+Route::get('/', [App\Http\Controllers\BookingController::class, 'index'])->name('booking');
+Route::post('/conform', [App\Http\Controllers\BookingController::class, 'confirm'])->name('confirm');
+Route::get('/chart',[App\Http\Controllers\HomeController::class, 'chart'])->name('chart');
+
+   
 
 //user routes
 Route::get('/user/profile',[App\Http\Controllers\HomeController::class,'showUser'])->name('user-profile');
