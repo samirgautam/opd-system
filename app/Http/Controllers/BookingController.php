@@ -44,9 +44,9 @@ class BookingController extends Controller
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show()
     {
-        //
+        return view('booking.bookingform');
     }
 
     /**
