@@ -24,3 +24,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\BookingController::class, 'index'])->name('booking');
 Route::post('/conform', [App\Http\Controllers\BookingController::class, 'confirm'])->name('confirm');
+Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
+Route::post('/change-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');
+
+Route::get('/booking',[App\Http\Controllers\BookingController::class,'show'])->name('booking.show');
