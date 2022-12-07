@@ -27,6 +27,9 @@ Route::get('/booking/create',[App\Http\Controllers\BookingController::class,'ind
 //Doctor Routes
 Route::get('/doctor',[App\Http\Controllers\DoctorController::class,'index'])->name('doctor.index');
 Route::get('/doctor/create',[App\Http\Controllers\DoctorController::class,'create'])->name('doctor.create');
+Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
+Route::post('/change-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');
+
 
 //user routes
 Route::get('/user/profile',[App\Http\Controllers\HomeController::class,'showUser'])->name('user-profile');
