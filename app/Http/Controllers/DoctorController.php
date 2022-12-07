@@ -14,7 +14,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        
+        return view('doctor.index',['doctors' => Doctor::all()]);
     }
 
     /**
@@ -24,7 +25,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('doctor.create',['doctor' => Doctor::get()]);
     }
 
     /**
@@ -35,7 +36,30 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $doctor = Doctor::where('mobile_number', $request->mobile_number)->first();
+
+        if($doctor){
+            return "Doctor is already registered in the system";
+        }
+
+		$request->validate([
+            'name' => 'required|string',
+            'mobile_number' => 'required|numeric|digits:10',
+            'description' => 'required',
+        ]);
+
+        $doctor = Doctor::create([
+            'name' => $request->name,
+            'mobile_number' => $request->mobile_number,
+            'description' => $request->description
+
+        ]);
+
+        if(!$doctor){
+            return back()->with("error","error message");
+        }
+        return redirect()->route("doctor.index")->with("success","success message");
     }
 
     /**
@@ -55,9 +79,10 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Doctor $doctor)
+    public function edit($id)
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+        return view('doctor.edit',['doctor'=>$doctor]);
     }
 
     /**
@@ -67,9 +92,22 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(Request $request, $id)
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+
+        $doctor->update([
+            'name' => $request->name,
+            'mobile_number' => $request->mobile_number,
+            'description' => $request->description
+        ]);
+
+        if(!$doctor){
+            return back()->with("error", "Update error");
+        }
+
+        return redirect()->route('doctor.index')->with("success", "Update successfully");
+
     }
 
     /**
@@ -78,8 +116,11 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doctor $doctor)
+    public function destroy($id)
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+        $doctor->destroy($id);
+        return redirect()->route("doctor.index")->with("success","deleted successfully");
     }
 }
+

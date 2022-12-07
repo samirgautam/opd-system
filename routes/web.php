@@ -3,7 +3,7 @@
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +26,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/booking',[App\Http\Controllers\BookingController::class,'index'])->name('booking.index');
 Route::get('/booking/create',[App\Http\Controllers\BookingController::class,'index'])->name('booking.create');
 //Doctor Routes
-Route::get('/doctor',[App\Http\Controllers\DoctorController::class,'index'])->name('doctor.index');
-Route::get('/doctor/create',[App\Http\Controllers\DoctorController::class,'create'])->name('doctor.create');
+Route::get('/doctor/index', [DoctorController::class, 'index'])->name('doctor.index');
+Route::post('/doctor/save', [DoctorController::class, 'store'])->name('doctor.save');
+Route::get('/doctor/edit/{id}', [DoctorController::class, 'edit'])->name('doctor.edit');
+Route::post('/doctor/update/{id}',[DoctorController::class,'update'])->name('doctor.update');
+Route::post('/doctor/delete/{id}', [DoctorController::class, 'destroy'])->name('doctor.delete');
+Route::get('/doctor/create', [DoctorController::class, 'create'])->name('doctor.create');
+
 Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
 Route::post('/change-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');
 
