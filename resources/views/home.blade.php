@@ -20,4 +20,6 @@
         </div>
     </div>
 </div>
+Yaa content section rakhya xa la
+
 @endsection
