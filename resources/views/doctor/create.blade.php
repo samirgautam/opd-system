@@ -1,41 +1,56 @@
 @extends('layouts.app')
+
 @section('content')
-<body>
-  <div class="container">
-    <div class ="row">
-      <div class="col-md-8 offset-2">
-        <div class="card card-body shadow">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Create Doctor Profile') }}</div>
 
-        <form method="POST" action="{{route('doctor.save')}}">
-        @csrf
-        <div class = "row">
-          <div class = "col-sm">
-            <label for="name">Name:</label><br>
-            <input type="text"  name="name" placeholder="name"><br>
+                    <form action="{{ route('doctor.save') }}" method="POST">
+                        @csrf
+                        <div class="card-body">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @elseif (session('error'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
 
-            <label for="mobile_number">Mobile number:</label><br>
-            <input type="text" name="mobile_number" placeholder="mobile number"><br>
+                            <div class="mb-3">
+                                <label for="name" class="name">Name</label>
+                                <input name="name" type="name" class="form-control @error('name') is-invalid @enderror" id="name"
+                                    placeholder="Name">
+                                @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="mobile_number" class="form-label">Mobile Number</label>
+                                <input name="mobile_number" type="mobile_number" class="form-control @error('mobile number') is-invalid @enderror" id="mobile_number"
+                                    placeholder="Mobile Number">
+                                @error('mobile_number')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <input name="description" type="description" class="form-control" id="description"
+                                    placeholder="Description">
+                            </div>
 
-            <label for="description">Description:</label><br>
-            <input type="text" name="description" placeholder="description"><br><br>
+                        </div>
 
+                        <div class="card-footer">
+                            <button class="btn btn-success">Create</button>
+                        </div>
 
-            <button type="submit" class="btn btn-primary">update</button>
-
-          </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </form>
-      @if(session()->has('error'))
-    <div class="alert alert-danger">
-        {{ session()->get('error') }}
     </div>
-@endif
-
-        </div>
-      </div>
-    </div>
-  </div>
-  
-     
-</body>
 @endsection
