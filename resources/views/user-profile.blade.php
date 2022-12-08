@@ -20,22 +20,21 @@
                 <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
                   style="background-color: #efefef;">
                   <div>
-                    <p class="small text-muted mb-1">Mobile Number</p>
+                    <p class="small text-muted mb-1">Mobile Number :</p>
                     <p class="mb-0">{{Auth::user()->mobile_number}}</p>
+
+                    <p class="small text-muted mb-1">Email :</p>
+                    <p class="mb-0">{{Auth::user()->email}}</p>
+                    <p class="small text-muted mb-1">Password :</p>
+                    <p class="mb-0">********</p>
+                    <p class="small text-muted mb-1">Role :</p>
+                    <p class="mb-0">{{Auth::user()->is_admin?"admin":"user"}}</p>
+
+
                   </div>
-                  <div class="px-3">
-                    <p class="small text-muted mb-1">Followers</p>
-                    <p class="mb-0">976</p>
-                  </div>
-                  <div>
-                    <p class="small text-muted mb-1">Rating</p>
-                    <p class="mb-0">8.5</p>
-                  </div>
+
                 </div>
-                <div class="d-flex pt-1">
-                  <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">Chat</button>
-                  <button type="button" class="btn btn-primary flex-grow-1">Follow</button>
-                </div>
+                
               </div>
             </div>
           </div>
