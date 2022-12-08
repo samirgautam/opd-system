@@ -20,6 +20,8 @@ class HomeController extends Controller
         $this->middleware('auth');
 
     }
+
+
     public function changePassword()
     {
         return view('change-password');

@@ -113,12 +113,12 @@
           </div>
 
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div id="piechart" style="width: 900px; height: 500px;"></div>
+        <div class="row" widhth="100%">
+          <div class="col-md-4">
+            <div id="piechart" style="width: 500px; height: 500px;"></div>
           </div>
-          <div class="col-md-6">
-            <div id="dual_x_div" style="width: 900px; height: 500px;"></div>
+          <div class="col-md-8">
+            <div id="dual_x_div" style="width: 400px; height: 500px;"></div>
           </div>
 
         </div>
