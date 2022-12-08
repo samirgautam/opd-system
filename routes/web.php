@@ -45,3 +45,4 @@ Route::get('/chart',[App\Http\Controllers\HomeController::class, 'chart'])->name
 
 //user routes
 Route::get('/user/profile',[App\Http\Controllers\HomeController::class,'showUser'])->name('user-profile');
+Route::get('/dashboard',[App\Http\Controllers\HomeController::class,'dashboard'])->name('dashboard');
