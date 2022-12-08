@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
-use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -43,9 +39,7 @@ class HomeController extends Controller
 
 
 
-
-
-      Public  function chart(){
+        function chart(){
           //  $result=DB::select(DB::raw("SELECT count (*) as total_users, FROM `users` GROUP by users"));
         //$ChartData = "";
         //foreach($result as $list)
@@ -59,7 +53,6 @@ class HomeController extends Controller
 
     /**
      * Show the application dashboard.
-     *
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

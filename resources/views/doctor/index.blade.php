@@ -9,7 +9,7 @@
   <table class="table text-center table-striped">
   <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">S.N</th>
       <th scope="col">Name</th>
       <th scope="col">Mobile number</th>
       <th scope="col">Description</th>
