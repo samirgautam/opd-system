@@ -5,7 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Doctor List') }}</div>
+                    <div class="card-header">{{ __('Doctor List') }}
+                    <div class="text-right">
+                      <a href="{{route('doctor.create')}}" class="btn btn-primary w-20 ms-auto">New Doctor</a>
+                      </div>
+                    </div>
                     <table class="table">
                       <thead class="table-dark">
                       <tr>
