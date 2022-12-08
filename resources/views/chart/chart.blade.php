@@ -1,4 +1,5 @@
-<html>
+@extends('layouts.app')
+@section('content')
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -30,7 +31,7 @@
      <script type="text/javascript">
        google.charts.load('current', {'packages':['bar']});
        google.charts.setOnLoadCallback(drawStuff);
- 
+
        function drawStuff() {
          var data = new google.visualization.arrayToDataTable([
              ['', 'Visitors', 'Patients'],
@@ -46,10 +47,10 @@
            ['October', 500, 13.1],
            ['November', 400, 0.9],
            ['December', 500, 13.1],
- 
- 
+
+
          ]);
- 
+
          var options = {
            width:1000,
            chart: {
@@ -59,7 +60,7 @@
            bars: 'vertical', // Required for Material Bar Charts.
            series: {
              0: { axis: 'patient' }, // Bind series 0 to an axis named 'distance'.
-            
+
            },
            axes: {
              x: {
@@ -68,7 +69,7 @@
              }
            }
          };
- 
+
        var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
        chart.draw(data, options);
      };
@@ -76,7 +77,7 @@
       <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
-  
+
         function drawChart() {
           var data = google.visualization.arrayToDataTable([
             ['Days', 'Patient'],
@@ -84,21 +85,25 @@
             ['2',  70,],
             ['3',  66],
             ['5',  130],
-            ['6',  13]
+            ['6',  135],
+            ['7',  18],
+            ['8',  143],
+            ['9',  103],
+            ['10',  113]
           ]);
-  
+
           var options = {
             title: 'Opd ',
             curveType: 'function',
             legend: { position: 'bottom' }
           };
-  
+
           var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-  
+
           chart.draw(data, options);
         }
       </script>
- 
+
   </head>
   <body>
     <div class="container">
@@ -106,21 +111,21 @@
           <div class="col-md-12">
             <div id="curve_chart" style="width: 900px; height: 500px"></div>
           </div>
-          
+
         </div>
         <div class="row">
           <div class="col-md-6">
             <div id="piechart" style="width: 900px; height: 500px;"></div>
           </div>
           <div class="col-md-6">
-            <div id="dual_x_div" style="width: 900px; height: 500px;"></div> 
+            <div id="dual_x_div" style="width: 900px; height: 500px;"></div>
           </div>
-        
+
         </div>
       </div>
-    
-     
-</body>
-  </body>
 
-</html>
+
+</body>
+
+
+@endsection
