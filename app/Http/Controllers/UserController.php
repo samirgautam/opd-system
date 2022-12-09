@@ -40,7 +40,7 @@ class UserController extends Controller
     {
         $request->validate([
             "name"=>"required|string",
-            "email"=>"required|string",
+            "email"=>"required|string|unique:users,email",
             "password"=>"required",
             "mobile_number"=>"required|numeric|digits:10",
         ]);
@@ -63,8 +63,7 @@ class UserController extends Controller
             {
                 return back()->with("error","error message");
             }
-
-            return redirect()->route("user.index")->with("success","Product inserted Successfully");
+            return redirect()->route("user.index")->with("success","User Inserted Successfully");
     }
 
     /**
