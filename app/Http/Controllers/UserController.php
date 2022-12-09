@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -40,7 +41,7 @@ class UserController extends Controller
             "name"=>"required|string",
             "email"=>"required|string",
             "password"=>"required",
-            "mobile_number"=>"required|numeric",
+            "mobile_number"=>"required|numeric|digits:10",
         ]);
         
         $user = User::where('name',$request->name)->first();
@@ -52,7 +53,7 @@ class UserController extends Controller
             [
                 "name"=> $request->name,
                 "email" =>$request->email,
-                "password"=> $request->password,
+                "password"=> Hash::make('$request->password'),
                 "mobile_number"=>$request->mobile_number,
                 // "user_id"=>Auth::id(),
             ]);
