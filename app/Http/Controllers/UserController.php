@@ -39,15 +39,10 @@ class UserController extends Controller
     {
         $request->validate([
             "name"=>"required|string",
-            "email"=>"required|string",
+            "email"=>"required|string|unique:users,email",
             "password"=>"required",
             "mobile_number"=>"required|numeric|digits:10",
         ]);
-        
-        $user = User::where('name',$request->name)->first();
-        if($user){
-            return back()->with("error","User Already Exists");
-        }
 
         $user = User::create(
             [
@@ -62,8 +57,7 @@ class UserController extends Controller
             {
                 return back()->with("error","error message");
             }
-            
-            return redirect()->route("user.index")->with("success","Product inserted Successfully");
+            return redirect()->route("user.index")->with("success","User Inserted Successfully");
     }
 
     /**

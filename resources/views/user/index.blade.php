@@ -1,14 +1,15 @@
 @extends('layouts.app')
 @section('content')
-<body>
-    <div class="container">
-        @if(Session::has("success"))
+<div class="card card-body border-0 shadow mb-3">
+  <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-12">
+          @if(Session::has("success"))
           <div class="alert alert-success">
             {{Session::get("success")}}
           </div>
         @endif
-        
-        {{-- <div class="card card-body border-0 shadow mb-3"> --}}
+    
         
         <h5>List of Users</h5>
         
@@ -37,10 +38,11 @@
             </tr>
             @endforeach
           </tbody>
-        
-        {{-- </div> --}}
+        </table>
         </div>
-</body>
+      </div>
+  </div>
+</div>
 @endsection
 
 
