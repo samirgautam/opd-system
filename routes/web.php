@@ -21,6 +21,9 @@ use App\Http\Controllers\UserController;
 
 Auth::routes(['register'=>false]);
 
+Route::middleware(['auth'])->group(function () {
+
+
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -49,6 +52,9 @@ Route::get('/chart',[App\Http\Controllers\HomeController::class, 'chart'])->name
 Route::get('/user',[UserController::class,'index'])->name('user.index');
 Route::get('/user/create',[UserController::class,'create'])->name('user.create');
 Route::get('/user/profile',[App\Http\Controllers\HomeController::class,'showUser'])->name('user-profile');
+Route::get('/user/show',[App\Http\Controllers\UserController::class,'show'])->name('user.show');
 Route::post('/user/save',[App\Http\Controllers\UserController::class,'store'])->name('user.save');
 
+
 Route::get('/dashboard',[App\Http\Controllers\HomeController::class,'dashboard'])->name('dashboard');
+});
