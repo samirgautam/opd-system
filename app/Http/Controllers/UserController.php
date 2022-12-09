@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -35,7 +36,33 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name"=>"required|string",
+            "email"=>"required|string",
+            "password"=>"required",
+            "mobile_number"=>"required|numeric",
+        ]);
+        
+        $user = User::where('name',$request->name)->first();
+        if($user){
+            return back()->with("error","User Already Exists");
+        }
+
+        $user = User::create(
+            [
+                "name"=> $request->name,
+                "email" =>$request->email,
+                "password"=> $request->password,
+                "mobile_number"=>$request->mobile_number,
+                // "user_id"=>Auth::id(),
+            ]);
+        
+            if(!$user)
+            {
+                return back()->with("error","error message");
+            }
+            
+            return redirect()->route("user.index")->with("success","Product inserted Successfully");
     }
 
     /**

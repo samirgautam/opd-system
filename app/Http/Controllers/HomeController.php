@@ -20,6 +20,8 @@ class HomeController extends Controller
         $this->middleware('auth');
 
     }
+
+
     public function changePassword()
     {
         return view('change-password');
@@ -69,5 +71,10 @@ class HomeController extends Controller
     }
     public function showUser(){
         return view('user-profile');
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard.dashboard');
     }
 }

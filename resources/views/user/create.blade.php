@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Create User Profile') }}</div>
 
-                    <form action="{{ route('doctor.save') }}" method="POST">
+                    <form action="{{ route('user.save') }}" method="POST">
                         @csrf
                         <div class="card-body">
                             @if (session('status'))
@@ -29,6 +29,23 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                                    placeholder="Email">
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password"
+                                    placeholder="password">
+                              
+                                @error('password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
                                 <label for="mobile_number" class="form-label">Mobile Number</label>
                                 <input name="mobile_number" type="mobile_number" class="form-control @error('mobile number') is-invalid @enderror" id="mobile_number"
                                     placeholder="Mobile Number">
@@ -36,11 +53,7 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="mb-3">
-                                <label for="description" class="form-label">Description</label>
-                                <input name="description" type="description" class="form-control" id="description"
-                                    placeholder="Description">
-                            </div>
+                           
 
                         </div>
 
