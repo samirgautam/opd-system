@@ -48,3 +48,5 @@ Route::get('/chart',[App\Http\Controllers\HomeController::class, 'chart'])->name
 Route::get('/user',[UserController::class,'index'])->name('user.index');
 Route::get('/user/create',[UserController::class,'create'])->name('user.create');
 Route::get('/user/profile',[App\Http\Controllers\HomeController::class,'showUser'])->name('user-profile');
+Route::post('/user/save',[App\Http\Controllers\UserController::class,'store'])->name('user.save');
+
