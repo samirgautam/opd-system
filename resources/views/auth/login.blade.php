@@ -5,14 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header"></div>
 
                 <div class="card-body">
+                    <center><img src="https://codebluefox.com/wp-content/uploads/2021/05/logos-05.png"
+                        class="img-fluid mb-3" width="180px"></center>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end"></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -26,7 +28,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end"></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -65,6 +67,12 @@
                             </div>
                         </div>
                     </form>
+                    <footer class="text-center mt-2">
+                        <p>&copy; 2022 Itahari Medical
+                            <br>Developed by : <a href="https://codebluefox.com/" class="text-decoration-none"> Blue Fox
+                                Pvt. Ltd</a>
+                        </p>
+                    </footer>
                 </div>
             </div>
         </div>
