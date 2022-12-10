@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -44,6 +45,11 @@ class UserController extends Controller
             "mobile_number"=>"required|numeric|digits:10",
         ]);
 
+        $user = User::where('name',$request->name)->first();
+        if($user){
+            return back()->with("error","User Already Exists");
+        }
+
         $user = User::create(
             [
                 "name"=> $request->name,
@@ -52,7 +58,7 @@ class UserController extends Controller
                 "mobile_number"=>$request->mobile_number,
                 // "user_id"=>Auth::id(),
             ]);
-        
+
             if(!$user)
             {
                 return back()->with("error","error message");
@@ -66,9 +72,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        //return Doctor::get();
+        return view('user.generatebarcode',['doctor'=>Doctor::get()]);
+
     }
 
     /**
@@ -79,7 +87,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -91,7 +99,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
