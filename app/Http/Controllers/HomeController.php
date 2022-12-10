@@ -73,8 +73,8 @@ class HomeController extends Controller
         return view('user-profile');
     }
 
-    public function dashboard()
-    {
-        return view('dashboard.dashboard');
-    }
+    // public function dashboard()
+    // {
+    //     return view('dashboard.dashboard');
+    // }
 }

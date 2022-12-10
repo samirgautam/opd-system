@@ -22,7 +22,7 @@ use JetBrains\PhpStorm\ArrayShape;
 
 Auth::routes(['register'=>false]);
 
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
 
 
 
