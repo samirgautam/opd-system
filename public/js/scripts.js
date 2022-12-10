@@ -24,3 +24,4 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+

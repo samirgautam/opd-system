@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -16,6 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
+       
+                    
         return view('user.index',['users'=>User::all()]);
     }
 
@@ -100,8 +103,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        //
+         // example:
+        // alert()->question('Are you sure?','You won\'t be able to revert this!')->showCancelButton('Cancel', '#aaa');
+        $user = User::findOrfail($id);
+        $user->delete();
+        return redirect()->route("user.index")->with("success","User Deleted Successfully");
     }
+   
 }
