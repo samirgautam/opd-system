@@ -3,7 +3,7 @@
 <body>
   <div class ="container">
 
-  <a href="{{route('doctor.create')}}" class="btn btn-primary w-25 ms-auto mb-5">New Doctor</a>
+  <a href="{{route('doctor.create')}}" class="btn btn-primary w-25 ms-auto mt-2 mb-2">New Doctor</a>
 
   <div class ="card card-body shadow">
   <table class="table text-center table-striped">
