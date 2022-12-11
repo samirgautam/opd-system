@@ -61,4 +61,3 @@ Route::get('/booking/form',[App\Http\Controllers\BookingController::class,'show'
 Route::post('/booking/save',[App\Http\Controllers\BookingController::class,'store'])->name('savebooking');
 Route::get('/booking/list',[App\Http\Controllers\BookingController::class,'index'])->name('bookinglist');
 
-//Route::get('/dashboard',[App\Http\Controllers\HomeController::class,'dashboard'])->name('dashboard');
