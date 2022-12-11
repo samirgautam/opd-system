@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.1",
+        "milon/barcode": "^9.0",
         "realrashid/sweet-alert": "^5.1"
     },
     "require-dev": {
