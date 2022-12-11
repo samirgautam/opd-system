@@ -57,5 +57,6 @@ Route::get('/user/show',[App\Http\Controllers\UserController::class,'show'])->na
 Route::post('/user/save',[App\Http\Controllers\UserController::class,'store'])->name('user.save');
 
 Route::delete('/user/delete/{id}',[App\Http\Controllers\UserController::class,'destroy'])->name('user.delete');
+Route::get('/booking/form',[App\Http\Controllers\BookingController::class,'show'])->name('bookingform');
 
-// Route::get('/dashboard',[App\Http\Controllers\HomeController::class,'dashboard'])->name('dashboard');
+//Route::get('/dashboard',[App\Http\Controllers\HomeController::class,'dashboard'])->name('dashboard');
