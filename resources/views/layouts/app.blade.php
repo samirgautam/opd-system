@@ -76,8 +76,8 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{route('bookinglist')}}">List Booking</a>
-                                    <a class="nav-link" href="{{route('bookinglist')}}">Add Booking</a>
+                                    <a class="nav-link" href="{{ route('bookinglist') }}">List Booking</a>
+                                    <a class="nav-link" href="{{route('bookingform')}}">Add Booking</a>
                                 </nav>
                             </div>
                             

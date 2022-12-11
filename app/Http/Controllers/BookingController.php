@@ -14,7 +14,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        return view('booking.index',['booking_list'=>Booking::get()]);
     }
 
     /**
@@ -35,20 +35,23 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+         //return $request;
         $request->validate([
             'name' => 'string|required',
             'address' => 'string|required',
             'sex' => 'required|in:male,female,other',
             'mobile_num'=> 'string|required|min:10|max:10',
-            'date' => 'date|required',
+            'age' =>'numeric|required',
+            'is_paid'=> 'boolean',
         ]);
 
         $booking = Booking::create([
             'name' => $request->name,
             'address' => $request->address,
             'sex' => $request->sex,
+            'age' =>$request->age,
             'mobile_num' => $request->mobile_num,
-            'date' => $request->date,
+            'is_paid'=> $request->has('is_paid')? true: false,
         ]);
         if(!$booking){
             return back()->with("error","Insertion failed");

@@ -1,64 +1,48 @@
-
 @extends('layouts.app')
 @section('content')
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
- 
-<div class="container">
-  <form action="" method="POST">
-    @csrf
-      <div class="mb-3">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" name="name" id="name" required>
+  <div class="container">
 
-
-      </div>
-      <div class="mb-3">
-        <label for="address" class="form-label">Address</label>
-        <input type="text" class="form-control"  name="quantity" id="address" required>
-      </div>
-      <label for="">Please select your gender</label>
-      <div class="form-check">
-
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
-          Male
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-        <label class="form-check-label" for="flexRadioDefault2">
-          Female
-        </label>
-
-
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-        <label class="form-check-label" for="flexRadioDefault2">
-          Other
-        </label>
-
-
-        <div class="mb-3">
-          <label for="mobile_number"  class="form-label">Mobile Number</label>
-          <input type="text" class="form-control" name="discount" id="discount">
+    <div class="card card-body shadow">
+      @if($errors->any()) {{ $errors }} @endif
+      <h5 class="card-text mb-3">Booking Form</h5>
+      <form action="{{ route('savebooking') }}" method="post">
+        @csrf
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" class="form-control">
         </div>
-        <div class="mb-3">
-            <label for="date"  class="form-label">Select your date</label>
-            <input type="date" class="form-control" name="date" id="date">
-          </div>
-
-
-      <input type="submit" value="submit">
-    </form>
-</div>
-
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" name="address" id="address" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" name="age" id="age" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="sex">Gender</label>
+          <select class="form-select" name="sex">
+            <option selected>.....................</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mobile_num">Mobile Number</label>
+          <input type="text" name="mobile_num" id="mobile_num" class="form-control">
+        </div>
+        <div class="form-group mt-3">
+          <label for="is_paid">Payment Status</label>&nbsp;&nbsp;&nbsp;
+            <input class="form-check-input" type="checkbox" value="1" id="is_paid" name="is_paid">
+            <label class="form-check-label" for="is_paid">
+              Paid
+            </label>
+          
+        </div>
+        <div class="form-group mt-3">
+          <button type="submit" class="btn btn-primary">Book Now</button>
+        </div>
+      </form>
+    </div>
+  </div>
 @endsection
