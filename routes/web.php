@@ -60,4 +60,7 @@ Route::delete('/user/delete/{id}',[App\Http\Controllers\UserController::class,'d
 Route::get('/booking/form',[App\Http\Controllers\BookingController::class,'show'])->name('bookingform');
 Route::post('/booking/save',[App\Http\Controllers\BookingController::class,'store'])->name('savebooking');
 Route::get('/booking/list',[App\Http\Controllers\BookingController::class,'index'])->name('bookinglist');
+Route::get('/booking/edit/{id}',[App\Http\Controllers\BookingController::class,'edit'])->name('editbooking');
+Route::post('/booking/edit/{id}',[App\Http\Controllers\BookingController::class,'update'])->name('updatebooking');
+Route::post('/booking/delete/{id}',[App\Http\Controllers\BookingController::class,'destroy'])->name('destroybooking');
 

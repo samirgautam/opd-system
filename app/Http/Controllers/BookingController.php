@@ -79,6 +79,8 @@ class BookingController extends Controller
     public function edit($id)
     {
         //
+        $booking_list = Booking::findOrFail($id);
+        return view('booking.editbooking',['list' => $booking_list]);
     }
 
     /**
@@ -90,7 +92,28 @@ class BookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $updateBooking = Booking::findOrfail($id);
+        $request->validate([
+            'name' => 'string|required',
+            'address' => 'string|required',
+            'sex' => 'required|in:male,female,other',
+            'mobile_num'=> 'string|required|min:10|max:10',
+            'age' =>'numeric|required',
+            'is_paid'=> 'boolean',
+        ]);
+        $isSuccess =$updateBooking->update([
+            'name'=> $request->name,
+            'address' => $request->address,
+            'sex' => $request->sex,
+            'age' =>$request->age,
+            'mobile_num' => $request->mobile_num,
+            'is_paid'=> $request->has('is_paid')? true: false,
+        ]);
+        if(!$isSuccess){
+            return back()->with('error','Update failed.....');
+        }
+        return redirect()->route('bookinglist')->withSuccess('Update Success..');
+
     }
 
     /**
@@ -102,5 +125,10 @@ class BookingController extends Controller
     public function destroy($id)
     {
         //
+        $delete = Booking::findOrfail($id);
+        if($delete->delete()){
+            return redirect()->route('bookinglist')->withSuccess('Booking deleted successfully');
+        }
+        
     }
 }

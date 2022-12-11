@@ -10,14 +10,29 @@
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" name="name" id="name" class="form-control">
+          <div class="form-text">
+              @if ($errors->has('name'))
+                {{ $errors->first() }}
+              @endif
+          </div>
         </div>
         <div class="form-group">
           <label for="address">Address</label>
           <input type="text" name="address" id="address" class="form-control">
+          <div class="form-text">
+            @if ($errors->has('address'))
+              {{ $errors }}
+            @endif
+        </div>
         </div>
         <div class="form-group">
           <label for="age">Age</label>
           <input type="number" name="age" id="age" class="form-control">
+          <div class="form-text">
+            @if ($errors->has('name'))
+              {{ $errors }}
+            @endif
+        </div>
         </div>
         <div class="form-group">
           <label for="sex">Gender</label>
@@ -26,10 +41,20 @@
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
+          <div class="form-text">
+            @if ($errors->has('name'))
+              {{ $errors }}
+            @endif
+        </div>
         </div>
         <div class="form-group">
           <label for="mobile_num">Mobile Number</label>
           <input type="text" name="mobile_num" id="mobile_num" class="form-control">
+          <div class="form-text">
+            @if ($errors->has('name'))
+              {{ $errors }}
+            @endif
+        </div>
         </div>
         <div class="form-group mt-3">
           <label for="is_paid">Payment Status</label>&nbsp;&nbsp;&nbsp;
@@ -37,7 +62,11 @@
             <label class="form-check-label" for="is_paid">
               Paid
             </label>
-          
+            <div class="form-text">
+              @if ($errors->has('name'))
+                {{ $errors }}
+              @endif
+          </div>
         </div>
         <div class="form-group mt-3">
           <button type="submit" class="btn btn-primary">Book Now</button>

@@ -26,11 +26,12 @@
         <td>{{ $list->mobile_num }}</td>
         <td>{{ $list->is_paid }}</td>
         <td class="d-flex justify-content-around">
-          <a href="#" class="btn btn-primary">Update</a>
-          <form action="" method="post">
-            <a href="#" class="btn btn-danger">Delete</a>
+          <a href="{{ route('editbooking',$list->id) }}" class="btn btn-primary">Update</a>
+          <form action="{{ route('destroybooking',$list->id) }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-danger">Delete</button>
           </form>
-          <a href="" class="btn btn-success">View</a>
+          <a href="#" class="btn btn-success">View</a>
         </td>
       </tr>
       @endforeach
