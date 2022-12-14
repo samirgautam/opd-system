@@ -14,7 +14,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        return view('booking.index',['booking_list'=>Booking::get()]);
     }
 
     /**
@@ -35,51 +35,100 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         //return $request;
+        $request->validate([
+            'name' => 'string|required',
+            'address' => 'string|required',
+            'sex' => 'required|in:male,female,other',
+            'mobile_num'=> 'string|required|min:10|max:10',
+            'age' =>'numeric|required',
+            'is_paid'=> 'boolean',
+        ]);
+
+        $booking = Booking::create([
+            'name' => $request->name,
+            'address' => $request->address,
+            'sex' => $request->sex,
+            'age' =>$request->age,
+            'mobile_num' => $request->mobile_num,
+            'is_paid'=> $request->has('is_paid')? true: false,
+        ]);
+        if(!$booking){
+            return back()->with("error","Insertion failed");
+        }
+        return redirect()->route('bookinglist')->withSuccesss("Insertion successful");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Booking  $booking
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show()
     {
-        //
+        return view('booking.bookingform');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Booking  $booking
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Booking $booking)
+    public function edit($id)
     {
         //
+        $booking_list = Booking::findOrFail($id);
+        return view('booking.editbooking',['list' => $booking_list]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Booking  $booking
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Booking $booking)
+    public function update(Request $request, $id)
     {
-        //
+        $updateBooking = Booking::findOrfail($id);
+        $request->validate([
+            'name' => 'string|required',
+            'address' => 'string|required',
+            'sex' => 'required|in:male,female,other',
+            'mobile_num'=> 'string|required|min:10|max:10',
+            'age' =>'numeric|required',
+            'is_paid'=> 'boolean',
+        ]);
+        $isSuccess =$updateBooking->update([
+            'name'=> $request->name,
+            'address' => $request->address,
+            'sex' => $request->sex,
+            'age' =>$request->age,
+            'mobile_num' => $request->mobile_num,
+            'is_paid'=> $request->has('is_paid')? true: false,
+        ]);
+        if(!$isSuccess){
+            return back()->with('error','Update failed.....');
+        }
+        return redirect()->route('bookinglist')->withSuccess('Update Success..');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Booking  $booking
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Booking $booking)
+    public function destroy($id)
     {
         //
+        $delete = Booking::findOrfail($id);
+        if($delete->delete()){
+            return redirect()->route('bookinglist')->withSuccess('Booking deleted successfully');
+        }
+        
     }
 }
